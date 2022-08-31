@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "/root/alx-system_engineering-devops/0x00-shell_basics"
+echo "/tmp/correction/7022837880404030770470818401530950173052_5/205/127342/0x00-shell_basics"
