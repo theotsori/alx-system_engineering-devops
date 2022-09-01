@@ -1,1 +1,1 @@
-These are navigation codes for shell basics.
+These are navigation codes for shell basics permissions.
