@@ -21,3 +21,4 @@
 20.Without C, you would live in hiago
 21.esreveR - script that reverse its input
 22. DJ Cut Killer - script that displays all users and their home directories, sorted by users. Based on the /etc/passwd file
+22. DJ Cut Killer - script that displays all users and their home directories, sorted by users. Based on the /etc/passwd file
