@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Bash Script that displays the visitor IP along with the HTTP status code
+
+awk '{print $1 " " $9}' ~/Documents/alx-system_engineering-devops/0x04-loops_conditions_and_parsing/apache-access.log
