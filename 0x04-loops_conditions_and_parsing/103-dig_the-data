@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Bash script that groups visitors by IP and HTTP status code
+
+awk '{print $1,$9}' ~/Documents/alx-system_engineering-devops/0x04-loops_conditions_and_parsing/apache-access.log | sort | uniq -c | sort -nr | awk '{print $1 " " $2 " " $3}'
