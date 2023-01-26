@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#Bash script that displays numbers from 1 to 20
+
+int=1
+while [ $int -le 20 ]
+do
+    case $int in
+        4)
+            echo $int
+            echo "bad luck from China"
+            ;;
+        9)
+            echo $int
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo $int
+            echo "bad luck from Italy"
+            ;;
+        *)
+            echo $int
+            ;;
+    esac
+    int=$((int+1))
+done
