@@ -4,6 +4,6 @@
 PID_LIST=$(pgrep -f "bash")
 
 for PID in $PID_LIST; do
-    PROCESS_NAME=$(cat /proc/$PID/comm)
+    PROCESS_NAME=$(cat /proc/$((PID))/comm)
     echo "$PID $PROCESS_NAME"
 done
