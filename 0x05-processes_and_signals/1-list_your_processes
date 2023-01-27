@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #Store the output of the "ps" command in a variable
 #ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,bsdstart,bsdtime,args --forest
 ps auxf
