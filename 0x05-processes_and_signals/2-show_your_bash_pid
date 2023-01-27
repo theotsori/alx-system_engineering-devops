@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2009
+
+# Process ID of bash
+PROCESS_LIST=$(ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,bsdstart,bsdtime,comm --forest)
+
+BASH_PROCESSES=$(echo "$PROCESS_LIST" | grep -w "bash")
+
+echo "$BASH_PROCESSES"
