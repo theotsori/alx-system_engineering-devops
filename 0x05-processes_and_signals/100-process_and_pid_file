@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Script that creates a new script
+
+echo $$ > /var/run/myscript.pid
+
+#trap signals
+trap 'echo "I hate the kill command"; exit' SIGTERM
+trap 'echo "Y U no love me?!"; exit' SIGINT
+trap 'rm /var/run/myscript.pid; exit' SIGQUIT SIGTERM
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
