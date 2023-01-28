@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "start" ]; then
+    if [ -f "/var/run/my_process.pid" ]; then
+        echo "manage_my_process already running"
+        exit 1
+    fi
+    nohup ./manage_my_process &>/dev/null &
+    echo $! > /var/run/my_process.pid
+    echo "manage_my_process started"
+elif [ "$1" = "stop" ]; then
+    if [ ! -f "/var/run/my_process.pid" ]; then
+        echo "manage_my_process not running"
+        exit 1
+    fi
+    pid=$(cat /var/run/my_process.pid)
+    kill $pid
+    rm -f /var/run/my_process.pid
+    echo "manage_my_process stopped"
+elif [ "$1" = "restart" ]; then
+    if [ -f "/var/run/my_process.pid" ]; then
+        pid=$(cat /var/run/my_process.pid)
+        kill $pid
+        rm -f /var/run/my_process.pid
+        echo "manage_my_process stopped"
+    fi
+    nohup ./manage_my_process &>/dev/null &
+    echo $! > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+else
+    echo "Usage: 101-manage_my_process {start|stop|restart}"
+    exit 1
+fi
