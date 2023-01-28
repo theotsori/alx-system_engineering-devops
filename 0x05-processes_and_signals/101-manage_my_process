@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#My process id manager
 
 if [ "$1" = "start" ]; then
     if [ -f "/var/run/my_process.pid" ]; then
