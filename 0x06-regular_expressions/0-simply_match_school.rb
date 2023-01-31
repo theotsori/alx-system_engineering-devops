@@ -1,11 +1,8 @@
 #!/usr/bin/env ruby
 
 def match_string(string)
-  if /School/ =~ string
-    puts "#{string}"
-  else
-    puts ""
-  end
+  result = string.scan(/School/).join
+    puts result.empty? ? "" : result
 end
 
 input = ARGV[0]
