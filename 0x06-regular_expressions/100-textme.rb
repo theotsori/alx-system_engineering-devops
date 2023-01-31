@@ -1,16 +1,9 @@
 #!/usr/bin/env ruby
 
-log_file = ARGV[0]
+log = ARGV[0]
 
-if log_file.nil?
-  puts "ERROR: No log file specified."
-  exit 1
-end
+sender = log.match(/from:(.*?)\s/)[1]
+receiver = log.match(/to:(.*?)\s/)[1]
+flags = log.match(/flags:(.*?)\s/)[1]
 
-File.open(log_file, "r") do |file|
-  file.each_line do |line|
-    if line =~ /from:(\S*)\s.*to:(\S*)\s.*flags:([\d:-]*)/
-      puts "#{S1},#{S2},#{S3}"
-    end
-  end
-end
+puts "#{sender},#{receiver},#{flags}"
