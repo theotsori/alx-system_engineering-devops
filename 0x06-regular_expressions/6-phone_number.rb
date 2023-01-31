@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
 def match_string(string)
-  if /[^0-9]/ =~ string
-    puts ""
-  else /[0-9]/ =~ string
+  if /\d{10}/ =~ string
     puts "#{string}"
+  else
+    puts ""
   end
 end
 
