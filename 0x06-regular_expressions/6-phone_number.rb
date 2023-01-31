@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 def match_string(string)
-  if /\d{10}/ =~ string
+  if /\A\d{10}\z/ =~ string
     puts "#{string}"
   else
     puts ""
