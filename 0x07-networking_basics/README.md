@@ -1,6 +1,6 @@
 <h1>Networking Basics #1</h1>
 <h2>Open Systems Model (OSI model)</h2>
-<img src="https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/0fc96bd99faa7941b18bcae4c5f90c6acd11791d.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230201T051730Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=492b5ac605c148a5ff2daa16f235c372d0a40270327f3648e7207c013ce5583e">
+<img src="https://media.giphy.com/media/uDxkJAVSU7GY8/giphy.gif">
 OSI (Open Systems Interconnection) is an abstract model to describe layered communication and computer network design. The idea is to segregate the different parts of what make communication possible.
 
 It is organized from the lowest level to the highest level:
