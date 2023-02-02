@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Backup original resolv.conf
+sudo cp /etc/resolv.conf /etc/resolv.conf.bak
+
+# Clear resolv.conf
+sudo echo "" > /etc/resolv.conf
+
+# Add localhost resolution
+sudo echo "127.0.0.2 localhost" >> /etc/resolv.conf
+
+# Add facebook.com resolution
+sudo echo "8.8.8.8 facebook.com" >> /etc/resolv.conf
