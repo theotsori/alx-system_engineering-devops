@@ -2,8 +2,8 @@
 
 log = ARGV[0]
 
-sender = log.match(/from:(.*?)\s/)[1]
-receiver = log.match(/to:(.*?)\s/)[1]
-flags = log.match(/flags:(.*?)\s/)[1]
+sender = log[/from:(\w+|\+\d+)/, 1]
+receiver = log[/to:(\w+|\+\d+)/, 1]
+flags = log[/flags:([\w:]+)/, 1]
 
 puts "#{sender},#{receiver},#{flags}"
