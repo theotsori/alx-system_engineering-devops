@@ -1,6 +1,6 @@
 <h1>Web infrastructure design</h1>
 <p>A lot of websites are powered by simple web infrastructure, a lot of time it is composed of a single server with a LAMP stack.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lQNEW76KdYg" frameborder="0" allowfullscreen></iframe>
+<video width="560" height="315" src="https://www.youtube.com/embed/lQNEW76KdYg" frameborder="0" allowfullscreen></video>
 Web infrastructure design refers to the process of designing and implementing the technical architecture and components that support the operation of a web application or website. This includes the hardware, software, network, and storage components that are needed to support the application, as well as the security and scalability considerations that must be taken into account.
 
 The design of a web infrastructure typically begins with the identification of the application's requirements, such as the expected traffic volume, the types of data being processed, and the desired level of availability and reliability. Based on these requirements, the designer will choose appropriate hardware and software components, such as servers, databases, load balancers, and caching systems.
