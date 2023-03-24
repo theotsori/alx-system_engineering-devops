@@ -1,4 +1,4 @@
 #!/bin/bash
-Host 54.144.138.53
-    IdentifyFile ~/.ssh/school
+Host 98.98.98.98
+    IdentityFile ~/.ssh/school
     PasswordAuthentication no
