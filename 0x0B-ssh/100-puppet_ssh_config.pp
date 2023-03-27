@@ -1,3 +1,5 @@
+# Client onfiguration file (w/Puppet)
+
 file { "/root/.ssh":
   ensure => "directory",
   mode   => "0700",
