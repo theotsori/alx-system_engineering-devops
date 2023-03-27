@@ -1,12 +1,13 @@
 # Client onfiguration file (w/Puppet)
 
-file { '/home/theodore/.ssh/config':
-  ensure => 'file',
-  mode   => '0600',
-  content => "
-Host *
-    IdentityFile ~/.ssh/school
-    PreferredAuthentications publickey
-    PasswordAuthentication no
-"
+file_line { 'Turn off passwd auth':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'PasswordAuthentication no',
+  match => '^PasswordAuthentication',
+}
+
+file_line { 'Declare identity file':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'IdentityFile ~/.ssh/school',
+  match => '^#?IdentityFile',
 }
