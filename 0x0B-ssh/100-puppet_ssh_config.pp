@@ -1,12 +1,12 @@
 # Client onfiguration file (w/Puppet)
 
-file { "/root/.ssh":
-  ensure => "directory",
-  mode   => "0700",
-}
-
-file { '/root/.ssh/school':
+file { '/home/theodore/.ssh/config':
   ensure => 'file',
-  source => '/home/theodore/.ssh/school',
   mode   => '0600',
+  content => "
+Host *
+    IdentityFile ~/.ssh/school
+    PreferredAuthentications publickey
+    PasswordAuthentication no
+"
 }
