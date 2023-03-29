@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Install nginx
+apt-get update
+apt-get -y install nginx
+
+# Configure Nginx to listen on port 80
+sed -i 's/listen\s*80/listen 0.0.0.0:80/g' /etc/nginx/sites-available/default
+
+# Add content to the default Nginx page
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart Nginx
+service nginx restart
+
+exit 0
