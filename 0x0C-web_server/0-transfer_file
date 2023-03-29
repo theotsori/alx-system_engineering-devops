@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Check if number of arguments is correct
 if [ $# -lt 4 ]
