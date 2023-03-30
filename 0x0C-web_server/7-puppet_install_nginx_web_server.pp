@@ -1,5 +1,38 @@
-# Install Nginx web server (w/ Puppet)
-exec { 'server configuration':
-  provider => shell,
-  command  => 'sudo apt-get -y update; sudo apt-get -y install nginx; echo "Hello World!" > /var/www/html/index.html; sudo sed -i "/server_name _;/a location /redirect_me {\\n\\treturn 301 https://google.com; listen 80; \\n\\t}\\n" /etc/nginx/sites-available/default; sudo service nginx restart'
+# Install Nginx package
+package { 'nginx':
+  ensure => installed,
+}
+
+# Replace the default Nginx configuration with our own
+file { '/etc/nginx/sites-available/default':
+  ensure  => present,
+  content => "
+    server {
+      listen 80;
+      server_name _;
+
+      location /redirect_me {
+        return 301 https://www.example.com/;
+      }
+
+      location / {
+        add_header 'Content-Type' 'text/html';
+        return 200 'Hello World!\n';
+      }
+    }
+  ",
+}
+
+# Enable the default Nginx site
+file { '/etc/nginx/sites-enabled/default':
+  ensure  => 'link',
+  target  => '/etc/nginx/sites-available/default',
+  require => File['/etc/nginx/sites-available/default'],
+}
+
+# Restart Nginx to apply the changes
+service { 'nginx':
+  ensure    => running,
+  enable    => true,
+  subscribe => File['/etc/nginx/sites-enabled/default'],
 }
