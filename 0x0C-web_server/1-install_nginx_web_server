@@ -11,5 +11,3 @@ echo "Hello World!" > /var/www/html/index.html
 
 # Restart Nginx
 sudo service nginx restart
-
-exit 0
