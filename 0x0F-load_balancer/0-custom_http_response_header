@@ -1,1 +1,20 @@
 #!/usr/bin/env bash
+
+# This script configures Nginx on a new Ubuntu machine to include a custom HTTP response header
+# The header will contain the hostname of the server Nginx is running on, to help track load balancer functionality
+
+# Ignore SC2154 as we'll be using variables defined externally
+# shellcheck disable=SC2154
+
+# Install Nginx if it's not already installed
+if ! command -v nginx &> /dev/null
+then
+    sudo apt-get update
+    sudo apt-get install -y nginx
+fi
+
+# Add the custom header configuration to Nginx
+sudo sed -i '/server_name _;/a \        add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the configuration changes
+sudo systemctl restart nginx
