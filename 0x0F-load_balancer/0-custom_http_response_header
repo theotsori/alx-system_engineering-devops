@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
 # Configure Nginx to include custom response header
-sudo sed -i '/location \/ {/a \       add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
-sudo systemctl restart nginx
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install nginx -y
+
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+sudo sed -i '/server {/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+
+sudo nginx -t
+
+if [ $? -eq 0 ]
+then
+    sudo systemctl reload nginx
+fi
