@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
 # This script installs and configures HAproxy on a new Ubuntu machine to distribute traffic to web-01 and web-02 using roundrobin algorithm
 
-if ! command -v haproxy &> /dev/null
-then
-    sudo apt-get update
-    sudo apt-get install -y haproxy
-fi
+sudo apt-get update
+sudo apt-get install -y haproxy
 
-cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+sudo cp /etc/haproxy/haproxy.cfg{,.bak}
+sudo cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg # Create new configuration file
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode http
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
 frontend www
     bind *:80
-    mode http
     default_backend servers
 
 backend servers
@@ -18,8 +25,9 @@ backend servers
     balance roundrobin
     server web-01 127342-web-01:80 check
     server web-02 127342-web-02:80 check
+
 EOF
 
-sudo systemctl enable haproxy.service
+sudo systemctl restart haproxy
 
-sudo systemctl restart haproxy.service
+sudo systemctl enable haproxy
