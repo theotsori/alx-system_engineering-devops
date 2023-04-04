@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script configures Nginx on a new Ubuntu machine to include a custom HTTP response header
 # The header will contain the hostname of the server Nginx is running on, to help track load balancer functionality
 
