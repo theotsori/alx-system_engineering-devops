@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Define function to retrieve DNS records and output results
+
+get_dns_record() {
+  local domain="$1"
+  local subdomain="$2"
+  local record_type
+  record_type="$(dig +short -t any "${subdomain}.${domain}" | awk '{print $4}')"
+  local destination
+  destination="$(dig +short -t any "${subdomain}.${domain}" | awk '{print $NF}')"
+  echo "The subdomain ${subdomain} is a ${record_type} record and points to ${destination}"
+}
+
+# Check if subdomain argument is passed, otherwise audit all subdomains
+if [ -z "$2" ]; then
+  get_dns_record "$1" "www"
+  get_dns_record "$1" "lb-01"
+  get_dns_record "$1" "web-01"
+  get_dns_record "$1" "web-02"
+else
+  get_dns_record "$1" "$2"
+fi
