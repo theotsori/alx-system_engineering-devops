@@ -27,7 +27,7 @@ for subdomain in "${subdomains[@]}"; do
     cname_record=$(get_record "$domain" "$subdomain" "CNAME")
 
     if [ -n "$a_record" ]; then
-        echo "The subdomain $subdomain is an A record and points to $a_record"
+        echo "The subdomain $subdomain is a A record and points to $a_record"
     elif [ -n "$cname_record" ]; then
         echo "The subdomain $subdomain is a CNAME record and points to $cname_record"
     else
