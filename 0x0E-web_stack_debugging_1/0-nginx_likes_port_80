@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # Stop any processes listening on port 80
-sudo kill $(sudo lsof -t -i :80)
+rm /etc/nginx/sites-enabled/default
 
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
-
-sudo ufw allow 80/tcp
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 sudo systemctl restart nginx
