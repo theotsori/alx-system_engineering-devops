@@ -1,22 +1,36 @@
 #!/usr/bin/env bash
 # Define function to retrieve DNS records and output results
 
-get_dns_record() {
-  local domain="$1"
-  local subdomain="$2"
-  local record_type
-  record_type="$(dig +short -t any "${subdomain}.${domain}" | awk '{print $4}')"
-  local destination
-  destination="$(dig +short -t any "${subdomain}.${domain}" | awk '{print $NF}')"
-  echo "The subdomain ${subdomain} is a ${record_type} record and points to ${destination}"
+get_record() {
+    local domain=$1
+    local subdomain=$2
+    local record_type=$3
+
+    dig +short "$subdomain.$domain" "$record_type" | awk '{print $1}'
 }
 
-# Check if subdomain argument is passed, otherwise audit all subdomains
-if [ -z "$2" ]; then
-  get_dns_record "$1" "www"
-  get_dns_record "$1" "lb-01"
-  get_dns_record "$1" "web-01"
-  get_dns_record "$1" "web-02"
-else
-  get_dns_record "$1" "$2"
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 domain [subdomain]"
+    exit 1
 fi
+
+domain=$1
+
+if [ $# -eq 2 ]; then
+    subdomains=("$2")
+fi
+
+for subdomain in "${subdomains[@]}"; do
+    a_record=$(get_record "$domain" "$subdomain" "A")
+    cname_record=$(get_record "$domain" "$subdomain" "CNAME")
+
+    if [ -n "$a_record" ]; then
+        echo "The subdomain $subdomain is an A record and points to $a_record"
+    elif [ -n "$cname_record" ]; then
+        echo "The subdomain $subdomain is a CNAME record and points to $cname_record"
+    else
+        echo "No DNS record found for $subdomain.$domain"
+    fi
+done
