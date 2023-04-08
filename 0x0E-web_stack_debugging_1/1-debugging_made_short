@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Making fix short and sweet
-sed -i 's/listen  \[::\]:80 default_server;/listen  80 default_server;/g' /etc/nginx/sites-available/default
+sed -i "s/80 default_server/80/" /etc/nginx/sites-available/default
 service nginx start
