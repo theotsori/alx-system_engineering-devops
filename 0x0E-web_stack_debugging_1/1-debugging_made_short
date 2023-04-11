@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 # Making fix short and sweet
-
-sudo fuser -k 80/tcp
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
-sudo ufw allow 80/tcp
-sudo systemctl restart nginx
-sudo systemctl is-active nginx || echo "nginx is not running"
+sed -i "s/80 default_server/80/" /etc/nginx/sites-available/default
+service nginx start
