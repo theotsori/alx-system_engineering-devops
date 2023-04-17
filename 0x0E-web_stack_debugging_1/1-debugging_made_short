@@ -2,3 +2,4 @@
 # Making fix short and sweet
 sed -i "s/80 default_server/80/" /etc/nginx/sites-available/default
 service nginx start
+curl -I http://localhost:80
