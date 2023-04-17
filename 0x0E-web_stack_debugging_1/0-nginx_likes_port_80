@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # This script configures Nginx to listen on port 80.
 
-sudo apt-get update
-sudo apt-get install -y nginx
-sudo apt-get install systemd
-
-sudo sed -i '' /etc/nginx/nginx.conf
+cd /etc/nginx/sites-enabled/ || exit;
+rm default;
+ln -s /etc/nginx/sites-available/default default;
 sudo service nginx restart
