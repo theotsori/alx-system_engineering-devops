@@ -6,6 +6,7 @@ sudo apt-get install -y nginx
 sudo apt-get install systemd
 
 sudo sed -i 's/listen\s*80;/listen 0.0.0.0:80/g' /etc/nginx/nginx.conf
-sudo sed -i 's/listen \[::\]:80 default_server;/listen 80 default_server;/g' /etc/nginx/sites-available/default
 
 sudo service nginx restart
+curl http://localhost
+curl -I http://localhost:80
