@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Update package lists
+sudo apt-get update
+
+sudo apt-get install nginx -y
+
+sudo service nginx stop
+
+sudo sed -i 's/user nginx;\n\t# changed by script\n\tworker_processes 4;\n\t/' /etc/nginx/nginx.conf
+
+sudo sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:8080 default_server;/g' /etc/nginx/sites-enabled/default
+
+sudo service nginx start
