@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Converts file to tgz
+
+date=$(date +'%d-%m-%Y')
+
+filename="backup.sql"
+
+archive="$date.tar.gz"
+
+password="$1"
+
+mysqldump -u root -p$password --all-databases > $filename
+
+tar -czvf $archive $filename
