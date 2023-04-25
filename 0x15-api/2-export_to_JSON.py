@@ -11,12 +11,12 @@ File name must be: USER_ID.json
 
 import json
 import requests
-from sys import argv
+import sys
 
 
 if __name__ == "__main__":
     # Get user id from command line argument
-    user_id = argv[1]
+    user_id = sys.argv[1]
 
     # Build URLs for user and tasks
     user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
