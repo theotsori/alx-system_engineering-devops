@@ -14,6 +14,7 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
+    # Get user id from commandline
     user_id = argv[1]
     user_url = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
     tasks_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
