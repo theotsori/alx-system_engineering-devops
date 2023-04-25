@@ -3,8 +3,8 @@
 Python script that, using this REST API,for a given employee ID,
 returns info about their TO DO list progress
 """
+import requests 
 import sys
-import requests
 
 if __name__ == "__main__":
     # Get the employee ID from the command line argument
