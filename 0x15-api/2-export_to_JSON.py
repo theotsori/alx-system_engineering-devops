@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 """
 Export data in the JSON format.
-
 Records all tasks that are owned by this employee.
 Format must be: { "USER_ID": [{"task": "TASK_TITLE",
                   "completed": TASK_COMPLETED_STATUS,
                   "username": "USERNAME"}, ... ]}
 File name must be: USER_ID.json
 """
-
 import json
 import requests
 import sys
-
 
 if __name__ == "__main__":
     # Get user id from command line argument
