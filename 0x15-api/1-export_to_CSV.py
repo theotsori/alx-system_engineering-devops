@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Python script that retrieves information about an employee's TODO list progress from a REST API
+Python script that retrieves information about
+an employee's TODO list progress from a REST API
 and exports the data in CSV format.
 """
 import csv
