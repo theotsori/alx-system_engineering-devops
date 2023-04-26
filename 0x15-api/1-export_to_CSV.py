@@ -1,17 +1,27 @@
 #!/usr/bin/python3
 """
-Python script that retrieves information about
-an employee's TODO list progress from a REST API
+This script retrieves information about an
+employee's TODO list progress from a REST API
 and exports the data in CSV format.
 """
+
 import csv
 import requests
 import sys
 
-if __name__ == "__main__":
-    # Get user ID from command line argument
-    user_id = sys.argv[1]
 
+def export_todo_list(user_id):
+    """
+    Retrieve user and tasks data from REST API,
+    parse JSON data, and export the data in CSV format.
+
+    Args:
+        user_id (int): The ID of the user whose
+        TODO list progress will be exported.
+
+    Returns:
+        None
+    """
     # Send GET requests to API to get user and tasks data
     url_user = f"https://jsonplaceholder.typicode.com/users/{user_id}"
     url_tasks = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
@@ -31,3 +41,9 @@ if __name__ == "__main__":
         for task in tasks:
             status = "True" if task.get("completed") else "False"
             writer.writerow([user_id, username, status, task.get("title")])
+
+
+if __name__ == "__main__":
+    # Get user ID from command line argument
+    user_id = sys.argv[1]
+    export_todo_list(user_id)
