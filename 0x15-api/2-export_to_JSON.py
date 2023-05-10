@@ -17,11 +17,11 @@ if __name__ == "__main__":
 
     # Build URLs for user and tasks
     user_url = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-    tasks_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
+    rl = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
 
     # Send requests and get responses
     user_response = requests.get(user_url)
-    tasks_response = requests.get(tasks_url)
+    tasks_response = requests.get(rl)
 
     # Get JSON data from responses
     user_data = user_response.json()
