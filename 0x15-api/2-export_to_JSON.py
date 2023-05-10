@@ -16,8 +16,8 @@ if __name__ == "__main__":
     user_id = sys.argv[1]
 
     # Build URLs for user and tasks
-    user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    tasks_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    tasks_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
 
     # Send requests and get responses
     user_response = requests.get(user_url)
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     data = {user_id: tasks}
 
     # Set filename to USER_ID.json
-    filename = f"{user_id}.json"
+    filename = "{}.json".format(user_id)
 
     # Write data to file in JSON format
     with open(filename, mode="w") as f:
