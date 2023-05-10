@@ -24,9 +24,9 @@ def export_todo_list(user_id):
     """
     # Send GET requests to API to get user and tasks data
     url_user = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-    url_tasks = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
+    ks = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
     user_response = requests.get(url_user)
-    tasks_response = requests.get(url_tasks)
+    tasks_response = requests.get(ks)
 
     # Parse JSON data
     user = user_response.json()
