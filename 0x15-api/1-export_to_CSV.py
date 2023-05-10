@@ -23,8 +23,8 @@ def export_todo_list(user_id):
         None
     """
     # Send GET requests to API to get user and tasks data
-    url_user = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    url_tasks = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+    url_user = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    url_tasks = "https://jsonplaceholder.typicode.com/todos?userId={}".format(user_id)
     user_response = requests.get(url_user)
     tasks_response = requests.get(url_tasks)
 
@@ -34,7 +34,7 @@ def export_todo_list(user_id):
     username = user.get("username")
 
     # Write data to CSV file
-    with open(f"{user_id}.csv", mode="w", newline="") as csv_file:
+    with open("{}.csv".format(user_id), mode="w", newline="") as csv_file:
         writer = csv.writer(
             csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_ALL
         )
