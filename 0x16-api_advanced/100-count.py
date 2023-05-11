@@ -42,7 +42,9 @@ def count_words(subreddit, word_list, after='', word_count={}):
         title = post["data"]["title"]
         for word in word_list:
             if word.lower() in title.lower() and not any(
-                prefix in title.lower() for prefix in ["java.", "java!", "java_"]
+                prefix in title.lower() for prefix in ["java.",
+                                                       "java!",
+                                                       "java_"]
             ):
                 word_count[word.lower()] = word_count.get(word.lower(), 0) + 1
 
