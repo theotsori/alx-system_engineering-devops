@@ -1,6 +1,6 @@
 # Application Server
 
-![Application server](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/9/c7d1ed0a2e10d1b4e9b3.jpg)
+![Application server](https://cdn.educba.com/academy/wp-content/uploads/2019/04/What-is-Application-Server-1.jpg)
 
 - An application server is a software framework or container that provides an environment for running and managing applications. It acts as an intermediary between the client and the server-side applications, handling tasks such as request processing, data persistence, security, and scalability. The primary purpose of an application server is to host and execute web-based applications and services, providing the necessary infrastructure and services for their operation.   
 
