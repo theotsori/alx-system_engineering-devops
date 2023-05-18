@@ -1,7 +1,7 @@
 # HTTP server configuration
 server {
     listen 80;
-    server_name tsori.tech www.tsori.tech;
+    server_name 127.0.0.1 54.144.138.53;
 
     # Location for serving the page at root
     location / {
@@ -10,16 +10,11 @@ server {
 
     # Location serving page at airbnb-onepage
     location /airbnb-onepage/ {
-        proxy_pass http://localhost:5000;
-    }
-
-    # Location for serving the page at number_odd_or_even
-    location /number_odd_or_even/ {
-        proxy_pass http://localhost:5001;
+        proxy_pass http://localhost:5000/airbnb-onepage/;
     }
 
     # Location for serving the page at number_odd_or_even
     location /airbnb-dynamic/number_odd_or_even/ {
-        proxy_pass http://localhost:5001;
+        proxy_pass http://localhost:5001/number_odd_or_even/;
     }
 }
