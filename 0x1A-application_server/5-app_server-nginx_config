@@ -30,19 +30,36 @@ http {
 
         # HTTP server configuration
         server {
-            listen 80;
-            server_name 127.0.0.1 54.144.138.53;
+		listen 80;
+		server_name 127.0.0.1 54.144.138.53;
 
-            # Location for serving the page
-            location /airbnb-onepage/ {
-                proxy_pass http://localhost:5000/airbnb-onepage/;
-            }
+		# Location serving page at airbnb-onepage
+		location /airbnb-onepage/ {
+			include proxy_params;
+			proxy_pass http://localhost:5000/airbnb-onepage/;
+		}
 
-	    # Location for root
-	    location / {
-		proxy_pass http://localhost:5000;
-	    }
-        }
+		# Task 3
+		location /airbnb-dynamic/number_odd_or_even/ {
+			include proxy_params;
+			proxy_pass http://localhost:5001/number_odd_or_even/;
+		}
+
+		# Task 4 lets do this for the APi
+		location /api/ {
+			include proxy_params;
+			proxy_pass http://localhost:5002/api/;
+		}
+
+                # Location for serving the page at root
+                location / {
+                        proxy_pass http://localhost:5003;
+                }
+
+		location /static/ {
+			alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/;
+		}
+	}
 
 	##
 	# SSL Settings
