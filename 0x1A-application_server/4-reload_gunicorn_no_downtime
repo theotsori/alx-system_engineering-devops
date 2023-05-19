@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Get the PID of the Gunicorn process
-
-xargs kill -HUP
+# Reload gunicorn gracefully
+pkill -HUP gunicorn
