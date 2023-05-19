@@ -3,19 +3,19 @@
 pid=$(pgrep -f gunicorn)
 
 # Send a SIGTTOU to the process to stop accepting new requests
-kill -TTOU $pid
+kill -TTOU "$pid"
 
 # Wait for the process to stop accepting new requests
 sleep 1
 
 # Send a SIGHUP to the process to reload the configuration
-kill -HUP $pid
+kill -HUP "$pid"
 
 # Wait for the process to reload the configuration
 sleep 1
 
 # Send a SIGCONT to the process to start accepting new requests
-kill -CONT $pid
+kill -CONT "$pid"
 
 # Check if the process is still running
 if pgrep -f gunicorn > /dev/null; then
