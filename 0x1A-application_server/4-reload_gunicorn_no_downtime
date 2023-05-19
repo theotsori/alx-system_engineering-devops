@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # Get the PID of the Gunicorn process
-worker_pids=$(pgrep -f gunicorn)
+master_pid=$(pgrep -o -x gunicorn)
 
-kill -HUP "$worker_pids"
+# Check if Gunicorn is running
+if [ -z "$master_pid" ]; then
+  echo "Gunicorn is not running."
+  exit 1
+fi
 
-wait "$worker_pids"
-
-gunicorn --bind 0.0.0.0:8001 --workers 4 web_flask.0-hello_route:app
+# Send a graceful reload signal to the master process
+kill -s HUP "$master_pid"
