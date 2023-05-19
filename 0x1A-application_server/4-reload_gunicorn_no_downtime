@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Get the PID of the Gunicorn process
-if pgrep -x "gunicorn" > /dev/null; then
-    echo "Gunicorn reloaded successfully"
+worker_pids=$(pgrep -f gunicorn)
 
-    worker_pids=$(pgrep -x gunicorn)
+kill -HUP "$worker_pids"
 
-    for pid in $worker_pids; do
-        kill -HUP "$pid"
-    done
-fi
+wait "$worker_pids"
+
+gunicorn --bind 0.0.0.0:8001 --workers 4 web_flask.0-hello_route:app
