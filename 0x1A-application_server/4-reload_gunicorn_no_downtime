@@ -1,25 +1,11 @@
 #!/usr/bin/env bash
 # Get the PID of the Gunicorn process
-pid=$(pgrep -f gunicorn)
+if pgrep -x "gunicorn" > /dev/null; then
+    echo "Gunicorn reloaded successfully"
 
-# Send a SIGTTOU to the process to stop accepting new requests
-kill -TTOU "$pid"
+    worker_pids=$(pgrep -x gunicorn)
 
-# Wait for the process to stop accepting new requests
-sleep 1
-
-# Send a SIGHUP to the process to reload the configuration
-kill -HUP "$pid"
-
-# Wait for the process to reload the configuration
-sleep 1
-
-# Send a SIGCONT to the process to start accepting new requests
-kill -CONT "$pid"
-
-# Check if the process is still running
-if pgrep -f gunicorn > /dev/null; then
-  echo "Gunicorn reloaded successfully"
-else
-  echo "Failed to reload Gunicorn"
+    for pid in $worker_pids; do
+        kill -HUP "$pid"
+    done
 fi
