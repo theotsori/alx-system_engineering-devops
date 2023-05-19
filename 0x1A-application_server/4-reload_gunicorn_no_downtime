@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Get the PID of the Gunicorn process
 pid=$(pgrep -f gunicorn)
 
